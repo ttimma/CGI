@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>atom/icon/24/handbaggage</title>
+    <g id="atom/icon/24/handbaggage" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill-opacity="0.1" fill="#152649" cx="14" cy="14" r="14"></circle>
+        <rect id="Rectangle" fill="#152649" x="5" y="8" width="18" height="12" rx="2"></rect>
+        <rect id="Rectangle-Copy" stroke="#152649" x="10.5" y="5.5" width="7" height="8" rx="2"></rect>
+        <rect id="Rectangle-Copy-2" fill="#E2E4E8" transform="translate(14.500000, 14.000000) rotate(-90.000000) translate(-14.500000, -14.000000) " x="14" y="4" width="1" height="20" rx="0.5"></rect>
+        <rect id="Rectangle" fill="#E2E4E8" x="12" y="12" width="4" height="4" rx="1"></rect>
+    </g>
+</svg>

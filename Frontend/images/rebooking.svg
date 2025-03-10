@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>atom/icon/24/rebooking</title>
+    <g id="atom/icon/24/rebooking" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#152649" x="5" y="7" width="18" height="15" rx="2"></rect>
+        <rect id="Rectangle" stroke="#FFFFFF" fill="#152649" x="7" y="4" width="3" height="4" rx="1.5"></rect>
+        <rect id="Rectangle-Copy" stroke="#FFFFFF" fill="#152649" x="18" y="4" width="3" height="4" rx="1.5"></rect>
+        <path d="M7,11 L21,11 L21,19 C21,19.5522847 20.5522847,20 20,20 L8,20 C7.44771525,20 7,19.5522847 7,19 L7,11 L7,11 Z" id="Rectangle" fill="#FFFFFF"></path>
+        <polyline id="Path-9" stroke="#152649" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="12 14.9768382 14.3667918 17 18 13"></polyline>
+        <circle id="Oval" fill-opacity="0.1" fill="#152649" cx="14" cy="14" r="14"></circle>
+    </g>
+</svg>

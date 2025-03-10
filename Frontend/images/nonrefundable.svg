@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>atom/icon/24/refund</title>
+    <g id="atom/icon/24/refund" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M20.9591928,18.661 C19.7279821,20.6641667 17.5173991,22 14.9955157,22 C11.1316592,22 8,18.8651667 8,15 C8,11.1336667 11.1316592,8 14.9955157,8 C17.5465471,8 19.7781166,9.365 21,11.4066667" id="Stroke-3" stroke="#152649" stroke-width="2" stroke-linecap="round" transform="translate(14.500000, 15.000000) rotate(-90.000000) translate(-14.500000, -15.000000) "></path>
+        <polyline id="Path-8-Copy" stroke="#152649" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(11.000000, 8.000000) rotate(-44.000000) translate(-11.000000, -8.000000) " points="9.12732592 11 13 7.9035807 9 5"></polyline>
+        <circle id="Oval" fill-opacity="0.1" fill="#152649" cx="14" cy="14" r="14"></circle>
+    </g>
+</svg>

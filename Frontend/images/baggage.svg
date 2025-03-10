@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>atom/icon/24/checkedbaggage</title>
+    <g id="atom/icon/24/checkedbaggage" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill-opacity="0.1" fill="#152649" cx="14" cy="14" r="14"></circle>
+        <rect id="Rectangle" fill="#152649" x="8" y="7" width="12" height="13" rx="2"></rect>
+        <rect id="Rectangle-Copy" stroke="#152649" x="11.5" y="4.5" width="5" height="8" rx="2"></rect>
+        <rect id="Rectangle" stroke="#152649" x="5.5" y="20.5" width="17" height="3" rx="1.5"></rect>
+        <rect id="Rectangle-Copy-11" fill="#152649" x="7" y="21" width="2" height="2" rx="1"></rect>
+        <rect id="Rectangle-Copy-12" fill="#152649" x="13" y="21" width="2" height="2" rx="1"></rect>
+        <rect id="Rectangle-Copy-13" fill="#152649" x="19" y="21" width="2" height="2" rx="1"></rect>
+        <rect id="Rectangle-Copy-16" fill="#E2E4E8" x="11" y="9" width="1" height="9" rx="0.5"></rect>
+        <rect id="Rectangle-Copy-17" fill="#E2E4E8" x="16" y="9" width="1" height="9" rx="0.5"></rect>
+    </g>
+</svg>
