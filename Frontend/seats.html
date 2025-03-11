@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seat Booking</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container mt-4">
+    <h1>Seat Booking</h1>
+    <h2 id="flight-info"></h2>
+    <div id="message"></div>
+    
+    <!-- Wrap columns in a row -->
+    <div class="row">
+      <!-- Left column: Seat Map -->
+      <div class="col-md-8">
+        <div class="seat-map-wrapper">
+          <h1>Seat Map</h1>
+          <div id="seat-map">
+            <!-- Seat map dynamic content -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right column: Seat Preferences -->
+      <div class="col-md-4">
+        <h2>Seat Preferences</h2>
+        <form id="seat-preferences-form">
+          <!-- Number of passengers -->
+          <div class="mb-3">
+            <label for="numPassengers" class="form-label">Number of Passengers:</label>
+            <input type="number" id="numPassengers" name="numPassengers" class="form-control" min="1" value="1">
+            <div id="passengerError" class="text-danger mt-2" style="display:none;">
+              You can book tickets for maximum 6 passengers. If you wish to travel in a larger group, please book your trip through our Customer Service.
+            </div>
+          </div>
+  
+          <!-- Seat preference: window, aisle, no preference -->
+          <div class="mb-3">
+            <label class="form-label">Seat Preference:</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="seatPreference" id="prefWindow" value="window">
+              <label class="form-check-label" for="prefWindow">Window</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="seatPreference" id="prefAisle" value="aisle">
+              <label class="form-check-label" for="prefAisle">Aisle</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="seatPreference" id="prefNone" value="none" checked>
+              <label class="form-check-label" for="prefNone">No Preference</label>
+              <div id="seatPrefNote" class="text-danger" style="display:none;">
+                You can only choose Window/Aisle preference if travelling alone.
+              </div>              
+            </div>
+          </div>
+  
+          <!-- Extra legroom option -->
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="extraLegroom" name="extraLegroom">
+            <label class="form-check-label" for="extraLegroom">Extra Legroom</label>
+          </div>
+  
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary">Continue to Seat Selection</button>
+        </form>
+ 
+  <div id="chosen-seats" style="display: none; margin-top: 40px;">
+    <h4>Your Seats</h4>
+    <ul id="chosen-seats-list"></ul>
+    <button id="confirm-seats" class="btn btn-success mb-3">Book Selected Seats</button>
+  </div>
+</div>
+</div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="seats.js"></script>
+</body>
+</html>
