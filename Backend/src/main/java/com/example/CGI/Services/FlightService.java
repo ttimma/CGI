@@ -14,7 +14,7 @@ public class FlightService {
     public List<Flight> getAllFlights() {
         List<Flight> flights = new ArrayList<>();
         String[] destinations = {"New York", "Los Angeles", "London", "Berlin", "Paris", "Tokyo", "Amsterdam", "Rome", "Barcelona", "Stockholm"};
-        double[] basePrices = {450.0, 490.0, 150.0, 120.0, 200.0, 550.0, 180.0, 210.0, 220.0, 105.0};
+        double[] basePrices = {350.0, 200.0, 450.0, 1000.0, 300.0, 400.0, 380.0, 250.0, 450.0, 170.0};
         int flightNumber = 37;
         for (int i = 0; i < destinations.length; i++) {
             for (int j = 0; j < 10; j++) {
