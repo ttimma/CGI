@@ -3,13 +3,13 @@ package com.example.CGI.DTOs;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
 
-public class Flight {
-    private String flightNumber;
-    private String destination;
+public final class Flight {
+    private final String flightNumber;
+    private final String destination;
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm")
-    private LocalDateTime departureTime;
-    private double price;
+    private final LocalDateTime departureTime;
+    private final double price;
 
     public Flight(String flightNumber, String destination, LocalDateTime departureTime, double price) {
         this.flightNumber = flightNumber;
