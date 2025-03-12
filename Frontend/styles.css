@@ -5,31 +5,33 @@ body {
     text-align: center;
 }
 
-header {
-    background: #0077b6;
-    color: white;
-    padding: 10px 0;
+.navbar-brand {
+    font-family: Arial, sans-serif; 
+    font-size: 2.2rem;
+    color: #200a58;
+    margin-left: 0;
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    background: #023e8a;
+.gradient-bg {
+  background-color: #ff0000;
+  background: linear-gradient(to right, #ff0000, #5236ab);
 }
 
-nav li {
-    padding: 15px;
+.main-heading{
+    font-family: Arial, sans-serif; 
+    font-size: 2rem; 
+    color: #ffffff;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
+.flight-filtering .form-label {
+    font-family: Arial, sans-serif; 
+    font-size: 1rem; 
+    color: #ffffff;
 }
 
-main {
-    margin-top: 20px;
+#apply-filters {
+    font-family: Arial, sans-serif; 
+    color: #200a58;
 }
 
 select, button {
@@ -52,7 +54,7 @@ select, button {
     background-repeat: no-repeat;
     padding: 20px;
     position: relative; /* For absolute positioning of seats */
-    width: 400px; /* Adjust as needed */
+    width: 300px; /* Adjust as needed */
     height: 1200px; /* Adjust as needed */
     margin: 0 auto;
     box-sizing: content-box !important;
@@ -103,9 +105,37 @@ select, button {
     z-index: 2;
   }
   
-  #chosen-seats-list {
-    list-style: none; /* Hide the bullet */
-    padding-left: 0;
-    margin-left: 0;
+
+  #booking-summary {
+    font-family: Arial, sans-serif; 
+    font-size: 1rem; 
+    color: #ffffff;
   }
   
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .confirmation {
+    font-family: Arial, sans-serif; 
+    font-size: 1.5rem; 
+    color: #ffffff;
+  }
+
+  .seating-heading {
+    font-family: Arial, sans-serif; 
+    font-size: 1.5rem;
+    color: #200a58;
+  }
+
+  .select-flight {
+    background-color: #5236ab;
+    color: #ffffff;
+    margin-top: 0;
+  }
+
+  .fare-option {
+    background-color: #5236ab;
+  }
+
