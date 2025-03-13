@@ -1,8 +1,12 @@
 Palun kasutada avamiseks **Dockerit**:
 
-docker pull ttimma/my-java-app   
-docker run -p 8080:8080 ttimma/my-java-app
+Prerequisite: have Docker installed and running on your computer.
+1.	Open a Terminal (Command Prompt, PowerShell, or similar).
+2.	Pull the Image: **docker pull ttimma/my-java-app**
+3.	Run the Container: **docker run -p 8080:8080 ttimma/my-java-app**
+4.	Open in a Browser:  http://localhost:8080  
 
+<br>
 
 Proovitöö tegemine oli minu jaoks väga põnev ja õpetlik. Eriti andis nuputada, kuidas lahendada istekohtade automaatne pakkumine kliendile tema eelistuste järgi (seda nii äriloogiliselt kui ka koodis). 
 
