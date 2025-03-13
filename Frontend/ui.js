@@ -56,7 +56,7 @@ export function displayFlights(flights) {
       const departureDate = new Date(flight.departureTime);
       flightRow.innerHTML = `
           <td>${flight.destination}</td>
-          <td>${departureDate.toLocaleDateString()}</td>
+          <td>${departureDate.toLocaleDateString('et-EE', {day: '2-digit', month: '2-digit',year: 'numeric'})}</td>
           <td>${departureDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>
           <td>€${flight.price}</td>
           <td>

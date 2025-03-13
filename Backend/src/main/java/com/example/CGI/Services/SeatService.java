@@ -7,39 +7,30 @@ import java.util.*;
 
 @Service
 public class SeatService {
-    private final int ROWS = 28;   // A320 rows
-    private final int COLUMNS = 6; // e.g., columns A-F
-    private Seat[][] seats;
+    private final int ROWS = 28;     // Number of rows for an A320, for example.
+    private final int COLUMNS = 6;   // For columns A-F.
 
-    public SeatService() {
-        initializeSeats();
-    }
+    // Mapping between a flight number and its seat map (represented as a 2D array of Seat).
+    private Map<String, Seat[][]> flightSeatMaps = new HashMap<>();
 
-    // Initialize seats with 1-based row/column numbers in the Seat object
-    private void initializeSeats() {
-        seats = new Seat[ROWS][COLUMNS];
+    /**
+     * Initializes and stores a seat map for the given flight number.
+     * @param flightNumber The flight identifier.
+     * @return The generated 2D array of Seat objects.
+     */
+    public Seat[][] initializeSeatMapForFlight(String flightNumber) {
+        Seat[][] seats = new Seat[ROWS][COLUMNS];
         Random random = new Random();
 
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
-                boolean isTaken = random.nextDouble() < 0.3; // 30% chance the seat is taken
-
-                // Use (i+1) as the real row number
-                int realRowNumber = i + 1;
-
-                // For example, rows 11 and 12 (i+1 == 11 or 12) have extra legroom
+                boolean isTaken = random.nextDouble() < 0.3; // 30% chance the seat is taken.
+                int realRowNumber = i + 1; // 1-based row numbering.
                 boolean hasExtraLegroom = (realRowNumber == 11 || realRowNumber == 12);
-
-                // Determine window seat: first and last columns (1 and 6 if columns are 1..6)
-                // So if j=0 => column=1 => isWindow, if j=5 => column=6 => isWindow
-                int realColumnNumber = j + 1;
+                int realColumnNumber = j + 1; // 1-based column numbering.
                 boolean isWindow = (realColumnNumber == 1 || realColumnNumber == COLUMNS);
-
-                // Determine aisle seat: for a 6-seat configuration, columns 3 and 4
-                // So if j=2 => column=3 => aisle, if j=3 => column=4 => aisle
                 boolean isAisle = (realColumnNumber == 3 || realColumnNumber == 4);
 
-                // Store the seat in the 2D array
                 seats[i][j] = new Seat(
                         realRowNumber,
                         realColumnNumber,
@@ -50,9 +41,31 @@ public class SeatService {
                 );
             }
         }
+        flightSeatMaps.put(flightNumber, seats);
+        return seats;
     }
 
-    public List<Seat> getSeats() {
+    /**
+     * Retrieves the seat map for a given flight. If no seat map exists for the flight,
+     * a new one is initialized.
+     * @param flightNumber The flight identifier.
+     * @return The seat map as a 2D array of Seat objects.
+     */
+    public Seat[][] getSeatMapForFlight(String flightNumber) {
+        Seat[][] seats = flightSeatMaps.get(flightNumber);
+        if (seats == null) {
+            seats = initializeSeatMapForFlight(flightNumber);
+        }
+        return seats;
+    }
+
+    /**
+     * Converts the 2D seat map into a list of Seat objects.
+     * @param flightNumber The flight identifier.
+     * @return A list of all seats for the flight.
+     */
+    public List<Seat> getSeatsForFlight(String flightNumber) {
+        Seat[][] seats = getSeatMapForFlight(flightNumber);
         List<Seat> seatList = new ArrayList<>();
         for (Seat[] row : seats) {
             seatList.addAll(Arrays.asList(row));
@@ -60,17 +73,21 @@ public class SeatService {
         return seatList;
     }
 
-    // Book a seat using 1-based row/column from the user
-    public boolean bookSeat(int row, int col) {
-        // Convert to zero-based indices
+    /**
+     * Books a seat on a specific flight using 1-based row and column numbers.
+     * @param flightNumber The flight identifier.
+     * @param row The row number (1-based).
+     * @param col The column number (1-based).
+     * @return true if the booking is successful, false otherwise.
+     */
+    public boolean bookSeat(String flightNumber, int row, int col) {
+        Seat[][] seats = getSeatMapForFlight(flightNumber);
         int i = row - 1;
         int j = col - 1;
-
-        // Check bounds
+        // Check bounds.
         if (i < 0 || i >= ROWS || j < 0 || j >= COLUMNS) {
-            return false; // Out of bounds
+            return false; // Out of bounds.
         }
-
         Seat seat = seats[i][j];
         if (!seat.isTaken()) {
             seat.setTaken(true);
@@ -80,19 +97,20 @@ public class SeatService {
     }
 
     /**
-     * Recommend seats based on preferences.
-     *
-     * @param numberOfSeats      Number of seats requested.
-     * @param preferWindow       True if the user prefers window seats.
-     * @param preferExtraLegroom True if the user prefers seats with extra legroom.
-     * @param preferAisle        True if the user prefers aisle seats.
+     * Recommends seats on a specific flight based on the user's preferences.
+     * @param flightNumber The flight identifier.
+     * @param numberOfSeats The number of seats required.
+     * @param preferWindow True if window seats are preferred.
+     * @param preferExtraLegroom True if extra legroom is preferred.
+     * @param preferAisle True if aisle seats are preferred.
      * @return A list of recommended Seat objects.
      */
-    public List<Seat> recommendSeats(int numberOfSeats, boolean preferWindow, boolean preferExtraLegroom, boolean preferAisle) {
+    public List<Seat> recommendSeats(String flightNumber, int numberOfSeats, boolean preferWindow, boolean preferExtraLegroom, boolean preferAisle) {
+        Seat[][] seats = getSeatMapForFlight(flightNumber);
         List<Seat> recommendedSeats = new ArrayList<>();
 
-        // For multiple seats: try to find consecutive available seats in the same row.
         if (numberOfSeats > 1) {
+            // Try to find consecutive available seats in the same row.
             for (int i = 0; i < ROWS; i++) {
                 List<Seat> potentialSeats = new ArrayList<>();
                 for (int j = 0; j < COLUMNS; j++) {
@@ -104,7 +122,7 @@ public class SeatService {
                             return recommendedSeats;
                         }
                     } else {
-                        // If a seat is taken or doesn’t match, reset the consecutive check.
+                        // Reset the consecutive check if a seat is taken or doesn’t match.
                         potentialSeats.clear();
                     }
                 }
@@ -119,7 +137,7 @@ public class SeatService {
                     }
                 }
             }
-            // Sort the available seats based on a scoring function (lower score is a better match)
+            // Sort the available seats based on a scoring function (lower score is a better match).
             availableSeats.sort((s1, s2) ->
                     Double.compare(seatScore(s1, preferWindow, preferExtraLegroom, preferAisle),
                             seatScore(s2, preferWindow, preferExtraLegroom, preferAisle))
@@ -131,7 +149,11 @@ public class SeatService {
         return recommendedSeats;
     }
 
-    // Helper method to check if a seat matches the given preferences.
+    // ------------------- Helper Methods -------------------
+
+    /**
+     * Checks if a seat matches the given preferences.
+     */
     private boolean matchesPreferences(Seat seat, boolean preferWindow, boolean preferExtraLegroom, boolean preferAisle) {
         if (preferWindow && !seat.isWindow()) return false;
         if (preferExtraLegroom && !seat.isExtraLegroom()) return false;
@@ -139,7 +161,10 @@ public class SeatService {
         return true;
     }
 
-    // Helper method to assign a score to a seat based on preferences. Lower score means a better match.
+    /**
+     * Calculates a score for a seat based on preferences.
+     * Lower score indicates a better match.
+     */
     private double seatScore(Seat seat, boolean preferWindow, boolean preferExtraLegroom, boolean preferAisle) {
         double score = 0;
         if (preferWindow) {

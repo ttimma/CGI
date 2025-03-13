@@ -1,0 +1,87 @@
+  <!-- FLIGHTS.HTML  -->
+   
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Flight Booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+  
+  <div id="navbar-container"></div>
+  
+    <!-- Full-width gradient section -->
+    <div class="gradient-bg py-4">
+      <div class="container">
+        <!-- Heading -->
+        <h1 class="mb-3 main-heading">Flight Booking</h1>
+        
+        <!-- Filtering form -->
+        <div class="flight-filtering">
+          <div class="row">
+            <!-- Destination -->
+            <div class="col-12 mb-3">
+              <label for="destination" class="form-label">Choose a destination:</label>
+              <select id="destination" class="form-select">
+                <option value="">All Destinations</option>
+                <option value="Amsterdam">Amsterdam</option>
+                <option value="Barcelona">Barcelona</option>
+                <option value="Berlin">Berlin</option>
+                <option value="London">London</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <option value="New York">New York</option>
+                <option value="Paris">Paris</option>
+                <option value="Rome">Rome</option>
+                <option value="Stockholm">Stockholm</option>
+                <option value="Tokyo">Tokyo</option>
+              </select>
+            </div>
+  
+            <!-- Date + Button -->
+            <div class="col-12">
+              <label for="date" class="form-label">Choose a date:</label>
+              <input type="date" id="date" class="form-control" />
+  
+              <!-- Adjust the top margin so it’s not too close to the input -->
+              <button id="apply-filters" class="btn btn-light mt-5">
+                Apply Filters
+              </button>
+            </div>
+          </div>
+        </div>
+      </div><!-- /container -->
+    </div><!-- /gradient-bg -->
+  
+    <!-- Main content container for flights (outside the gradient) -->
+    <div class="container mt-4">
+      <h2>Available Flights</h2>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Destination</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody id="flights-list">
+          <!-- flight rows go here -->
+        </tbody>
+      </table>
+  
+      <div class="collapse" id="fare-options">
+        <div class="card card-body">
+          <!-- Fare options go here -->
+        </div>
+      </div>
+    </div><!-- /container -->
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="navbar.js"></script>
+    <script type="module" src="flights.js"></script>
+  </body>
+  </html>
+  

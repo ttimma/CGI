@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>atom/icon/24/seatselection</title>
+    <g id="atom/icon/24/seatselection" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#152649" x="10" y="16" width="10" height="4" rx="2"></rect>
+        <path d="M10.2066994,5.50083484 L12.6758257,17.4293808 C12.8605997,18.3220386 12.3470633,19.2114699 11.4816009,19.4977462 C10.741311,19.7426182 9.94267953,19.3410026 9.69780756,18.6007127 C9.67942255,18.5451317 9.66451238,18.488461 9.65316342,18.4310287 L7.29711575,6.50808279 C7.12676354,5.64600341 7.61779275,4.79022246 8.44801848,4.50225376 C9.150159,4.25871217 9.91678582,4.63048007 10.1603274,5.33262059 C10.1794077,5.38762973 10.1948975,5.44381924 10.2066994,5.50083484 Z" id="Rectangle-Copy" fill="#152649"></path>
+        <line x1="10" y1="17" x2="12" y2="23" id="Path-2-Copy-9" stroke="#152649" stroke-linecap="round" transform="translate(11.000000, 20.000000) scale(-1, 1) translate(-11.000000, -20.000000) "></line>
+        <line x1="10" y1="23" x2="16" y2="23" id="Path-2-Copy-9" stroke="#152649" stroke-linecap="round" transform="translate(13.000000, 23.000000) scale(-1, 1) translate(-13.000000, -23.000000) "></line>
+        <line x1="14" y1="13" x2="16" y2="13" id="Path-2-Copy-11" stroke="#152649" stroke-width="2" stroke-linecap="round" transform="translate(15.000000, 13.000000) scale(-1, 1) translate(-15.000000, -13.000000) "></line>
+        <line x1="17" y1="9.5" x2="21" y2="9.5" id="Path-2-Copy-12" stroke="#152649" stroke-linecap="round" transform="translate(19.000000, 9.500000) scale(-1, 1) translate(-19.000000, -9.500000) "></line>
+        <rect id="Rectangle" stroke="#152649" x="17" y="5" width="4" height="6" rx="2"></rect>
+        <circle id="Oval" fill-opacity="0.1" fill="#152649" cx="14" cy="14" r="14"></circle>
+    </g>
+</svg>

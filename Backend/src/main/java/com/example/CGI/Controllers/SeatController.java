@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/seats")
+@RequestMapping("/flights/{flightNumber}/seats")
 public class SeatController {
     private final SeatService seatService;
 
@@ -18,14 +18,32 @@ public class SeatController {
         this.seatService = seatService;
     }
 
+    /**
+     * Return all seats (as a list) for a given flight.
+     */
     @GetMapping
-    public List<Seat> getSeats() {
-        return seatService.getSeats();
+    public List<Seat> getSeats(@PathVariable String flightNumber) {
+        // Convert the flight's seat map into a list
+        return seatService.getSeatsForFlight(flightNumber);
     }
 
+    /**
+     * Return the 2D seat array for a given flight (if you still want it).
+     * Using "/matrix" or some other path to avoid collision with the list endpoint.
+     */
+    @GetMapping("/matrix")
+    public ResponseEntity<Seat[][]> getSeatMap(@PathVariable String flightNumber) {
+        Seat[][] seatMap = seatService.getSeatMapForFlight(flightNumber);
+        return ResponseEntity.ok(seatMap);
+    }
+
+    /**
+     * Book a seat on a given flight.
+     */
     @PostMapping("/book")
-    public ResponseEntity<String> bookSeat(@RequestBody Map<String, Integer> request) {
-        // Validate that the request body contains the required row and col keys.
+    public ResponseEntity<String> bookSeat(@PathVariable String flightNumber,
+                                           @RequestBody Map<String, Integer> request) {
+        // Validate row & col.
         if (request == null || !request.containsKey("row") || !request.containsKey("col")) {
             return ResponseEntity.badRequest().body("Row and column must be provided.");
         }
@@ -35,26 +53,34 @@ public class SeatController {
             return ResponseEntity.badRequest().body("Row and column values cannot be null.");
         }
 
-        // Try to book the seat.
-        boolean success = seatService.bookSeat(row, col);
+        // Try to book the seat
+        boolean success = seatService.bookSeat(flightNumber, row, col);
         if (success) {
             return ResponseEntity.ok("Seat booked successfully.");
         } else {
-            // Using 409 Conflict to indicate that the seat is already taken.
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Seat already taken.");
         }
     }
 
-
-    // Endpoint for seat recommendations.
+    /**
+     * Recommend seats for a given flight based on preferences.
+     */
     @GetMapping("/recommend")
     public ResponseEntity<List<Seat>> recommendSeats(
+            @PathVariable String flightNumber,
             @RequestParam int numberOfSeats,
             @RequestParam boolean preferWindow,
             @RequestParam boolean preferExtraLegroom,
             @RequestParam boolean preferAisle) {
 
-        List<Seat> recommendations = seatService.recommendSeats(numberOfSeats, preferWindow, preferExtraLegroom, preferAisle);
+        List<Seat> recommendations = seatService.recommendSeats(
+                flightNumber,
+                numberOfSeats,
+                preferWindow,
+                preferExtraLegroom,
+                preferAisle
+        );
+
         if (recommendations.isEmpty()) {
             // Return 404 Not Found if no seats are recommended.
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
